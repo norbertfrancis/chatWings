@@ -2,10 +2,11 @@ import { useEffect, useRef } from "react";
 import useGetMessages from "../../hooks/useGetMessages"
 import MessageSkeleton from "../skeletons/MessageSkeleton";
 import Message from "./Message"
+import useListenMessages from "../../hooks/useListenMessages";
 
 const Messages = () => {
   const {messages,loading} = useGetMessages();
-
+  useListenMessages(); // basically its listen any incoming messages messages
   //for automatic scrolling to top against each new message that send
   const lastMessageRef = useRef()
   useEffect(() => {

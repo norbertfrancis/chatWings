@@ -1,6 +1,7 @@
 import { useAuthContext } from "../../context/AuthContext";
 import { extractTime } from "../../utils/extractTime";
 import useConversation from "../../zustand (store)/useConversation";
+import { useSocketContext } from "../../context/SocketContext";
 
 const Message = ({message}) => {
   const {authUser} = useAuthContext();
@@ -10,10 +11,14 @@ const Message = ({message}) => {
   const chatClassName = fromMe ? 'chat-end' : 'chat-start';
   const profilePic = fromMe ? authUser.profilePic : selectedConversation?.profilePic;
   const bubbleBgColor = fromMe ? 'bg-blue-500' : "";
+  const {onlineUsers} = useSocketContext()
+
+  console.log("onlineUsers:", onlineUsers);
+console.log("selectedConversation id:", selectedConversation?._id);
 
   return (
     <div className={`chat ${chatClassName}`}>
-      <div className="chat-image avatar">
+      <div className={`chat-image avatar ${!fromMe && onlineUsers.includes(selectedConversation?._id) ? "online" : ""}`}>
         <div className="w-10 rounded-full">
           <img
             alt="Tailwind css chat bubble component"
