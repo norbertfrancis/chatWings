@@ -14,8 +14,6 @@ const Message = ({message}) => {
   const shakeClass = message.shouldShake ? "shake" : ""
 
 
-
-
   return (
     <div className={`chat ${chatClassName}`}>
       <div className={`chat-image avatar `}>
