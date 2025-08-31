@@ -1,24 +1,24 @@
 import { useAuthContext } from "../../context/AuthContext";
 import { extractTime } from "../../utils/extractTime";
 import useConversation from "../../zustand (store)/useConversation";
-import { useSocketContext } from "../../context/SocketContext";
+
 
 const Message = ({message}) => {
   const {authUser} = useAuthContext();
   const {selectedConversation } = useConversation();
   const fromMe = message.senderId === authUser._id;
-  const formatTime = extractTime(message.createdAt);
+  const formattedTime = extractTime(message.createdAt);
   const chatClassName = fromMe ? 'chat-end' : 'chat-start';
   const profilePic = fromMe ? authUser.profilePic : selectedConversation?.profilePic;
   const bubbleBgColor = fromMe ? 'bg-blue-500' : "";
-  const {onlineUsers} = useSocketContext()
+  const shakeClass = message.shouldShake ? "shake" : ""
 
-  console.log("onlineUsers:", onlineUsers);
-console.log("selectedConversation id:", selectedConversation?._id);
+
+
 
   return (
     <div className={`chat ${chatClassName}`}>
-      <div className={`chat-image avatar ${!fromMe && onlineUsers.includes(selectedConversation?._id) ? "online" : ""}`}>
+      <div className={`chat-image avatar `}>
         <div className="w-10 rounded-full">
           <img
             alt="Tailwind css chat bubble component"
@@ -26,8 +26,8 @@ console.log("selectedConversation id:", selectedConversation?._id);
           />
         </div>
       </div>
-      <div className={`chat-bubble text-white ${bubbleBgColor} pb-2`}>{message.message}</div>
-      <div className="chat-footer opacity-50 text-xs flex gap-1 items-center">{formatTime}</div>
+      <div className={`chat-bubble text-white ${bubbleBgColor} ${shakeClass} pb-2`}>{message.message}</div>
+      <div className="chat-footer opacity-50 text-xs flex gap-1 items-center">{formattedTime}</div>
     </div>
   );
 };
