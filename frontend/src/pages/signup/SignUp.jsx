@@ -26,7 +26,7 @@ function SignUp() {
 
   return (
   <div className="flex items-center justify-center min-h-screen bg-base-200">
-    <div className="w-full max-w-sm sm:max-w-md p-6 sm:p-8 bg-base-100 rounded-none sm:rounded-2xl shadow-none sm:shadow-xl">
+    <div className="w-full max-w-sm sm:max-w-md p-10 sm:p-8 bg-base-100 rounded-none sm:rounded-2xl shadow-none sm:shadow-xl">
       <h1 className="text-3xl font-bold text-center mb-6 text-primary">
         Sign Up <span className="text-secondary">chatWings</span>
       </h1>
