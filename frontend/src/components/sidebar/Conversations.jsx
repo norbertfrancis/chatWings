@@ -2,7 +2,7 @@ import useGetConversations from "../../hooks/useGetConversation";
 import { getRandomEmojis } from "../../utils/emojis";
 import Conversation from "./Conversation";
 
-const Conversations = () => {
+const Conversations = ({ onSelectConversation }) => {
   const {loading, conversations} = useGetConversations();
   console.log(conversations)
 
@@ -15,6 +15,7 @@ const Conversations = () => {
         conversation={conversation}
         emoji={getRandomEmojis()}
         lastIdx={idx === conversations.length -1}
+        onSelectConversation={onSelectConversation} 
         />
       ))}
       {loading ? <span className="loading loading-spinner mx-auto"></span> : null}

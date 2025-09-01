@@ -14,24 +14,25 @@ const MessageContainer = () => {
   },[setSelectedConversation])
   
   return (
-    <div className="md:min-w-[450px] flex flex-col">
-      {!selectedConversation ? (
-        <NoChatSelected />
-      ) : (
-        <>
-          {/* Header */}
-          <div className="bg-slate-500 px-4 py-2 mb-2">
-            <span className="label-text">To:</span>
-            <span className="text-gray-900 font-bold"> {selectedConversation.fullName}</span>
-          </div>
-          <Messages />
-          <MessageInput />
-        </>
-      )}
-    </div>
+<div className="flex flex-col h-full w-full">
+  {!selectedConversation ? (
+    <NoChatSelected />
+  ) : (
+    <>
+      <div className="bg-base-300 px-4 py-2 flex items-center justify-between shadow">
+        <span className="font-semibold text-sm md:text-base ml-12">To: {selectedConversation.fullName}</span>
+      </div>
+      <div className="flex-1 overflow-y-auto px-2">
+        <Messages />
+      </div>
+      <div className="p-2 border-t border-slate-600">
+        <MessageInput />
+      </div>
+    </>
+  )}
+</div>
   );
 };
-
 export default MessageContainer;
 
 const NoChatSelected = () => {

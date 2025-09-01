@@ -10,24 +10,35 @@ const Message = ({message}) => {
   const formattedTime = extractTime(message.createdAt);
   const chatClassName = fromMe ? 'chat-end' : 'chat-start';
   const profilePic = fromMe ? authUser.profilePic : selectedConversation?.profilePic;
-  const bubbleBgColor = fromMe ? 'bg-blue-500' : "";
+  // const bubbleBgColor = fromMe ? 'bg-blue-500' : "";
   const shakeClass = message.shouldShake ? "shake" : ""
 
 
-  return (
-    <div className={`chat ${chatClassName}`}>
-      <div className={`chat-image avatar `}>
-        <div className="w-10 rounded-full">
-          <img
-            alt="Tailwind css chat bubble component"
-            src={profilePic}
-          />
-        </div>
+ return (
+  <div className={`chat ${chatClassName}`}>
+    {/* Avatar */}
+    <div className="chat-image avatar">
+      <div className="w-8 h-8 md:w-10 md:h-10 rounded-full">
+        <img src={profilePic} alt="profile" />
       </div>
-      <div className={`chat-bubble text-white ${bubbleBgColor} ${shakeClass} pb-2`}>{message.message}</div>
-      <div className="chat-footer opacity-50 text-xs flex gap-1 items-center">{formattedTime}</div>
     </div>
-  );
+
+    {/* Bubble */}
+    <div
+      className={`chat-bubble max-w-[75%] md:max-w-[60%] break-words shadow-md 
+        ${fromMe ? "bg-sky-500 text-white" : "bg-gray-700 text-gray-100"} 
+        ${shakeClass}`}
+    >
+      {message.message}
+    </div>
+
+    {/* Footer */}
+    <div className="chat-footer text-[10px] md:text-xs opacity-70 mt-1">
+      {formattedTime}
+    </div>
+  </div>
+);
+;
 };
 
 export default Message;
