@@ -13,7 +13,7 @@ const MessageInput = () => {
 
   }
   return (
-    <form onSubmit={handleSubmit} className="flex items-center gap-2 w-full">
+    <form onSubmit={handleSubmit} className="p-1 flex items-center gap-2 w-full">
   <input 
     type="text" 
     className="input input-bordered w-full rounded-full text-sm bg-base-200" 

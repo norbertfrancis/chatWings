@@ -4,7 +4,7 @@ import MobileSidebar from "../../components/sidebar/MobileSidebar";
 
 function Home() {
   return (
-    <div className="relative flex h-full w-full md:h-[600px] md:w-[900px] rounded-lg overflow-hidden shadow-2xl bg-base-200">
+    <div className="relative flex h-screen w-screen md:h-[600px] md:w-[900px] rounded-lg overflow-hidden shadow-2xl bg-base-200">
       
       {/* Desktop Sidebar */}
       <div className="hidden md:flex w-1/3 border-r border-slate-700">
